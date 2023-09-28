@@ -1,0 +1,10 @@
+Consultas sobre RegEx
+Párrafos de ejemplo con palabras palíndromas
+RegEx caracteres no alfanuméricos
+writeUTF vs writeChars?
+Correcciones código?
+Duda flush stream
+
+---
+
+Los nombres han de tener un espacio de 12, no de 10

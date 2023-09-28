@@ -1,0 +1,13 @@
+Arrays con los datos a insertar en el fichero
+-----------------------------------------------------
+
+SUPERHEROES
+---------
+	int [] ids= {1, 2, 3, 4, 5, 6, 7};
+	String[] dnis= {"01010101A", "03030303C", "05050505E", "07070707G", "02020202B", "04040404D", "06060606F"};
+	String[] noms= {"Spiderman", "Green Goblin", "Storm", "Wolverine", "Mystique", "IronMan", "Mandarin"};
+	String[] identidades = {"Peter Parker", "Norman Osborn", "Ororo Munroe","James Howlett", "Raven Darkholme", "Tony Stark", "Zhang Tong"};
+	String[] tipos = {"heroe","villano","heroe","heroe","villano","heroe","villano"};
+	int[] pesos = {76,84,66,136,78,102,70};
+	int[] alturas = {178,183,156,152,177,182,188};
+

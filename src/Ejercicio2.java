@@ -16,29 +16,16 @@ public class Ejercicio2 {
                 rutaFicheroEntrada,
                 StandardCharsets.UTF_8
             ));
-            FileWriter escribirFichero = new FileWriter(
+            BufferedWriter escribirFichero = new BufferedWriter(new FileWriter(
                 rutaFicheroSalida,
                 StandardCharsets.UTF_8
-            );
+            ));
         ) {
             String linea;
-            boolean esPalindroma;
             while ((linea = leerFichero.readLine()) != null) {
                 String[] palabras = linea.split("[^a-zA-Z0-9]+");
                 for (String palabra : palabras) {
-                    if (palabra.length() > 1) {
-                        String palabraMayus = palabra.toUpperCase();
-                        int i = 0;
-                        int longitudPalabra = palabra.length();
-                        esPalindroma = palabraMayus.charAt(0) == palabraMayus.charAt(longitudPalabra - 1);
-                        while (esPalindroma && i < longitudPalabra / 2) {
-                            esPalindroma &= palabraMayus.charAt(i) == palabraMayus.charAt(longitudPalabra - i - 1);
-                            i++;
-                        }
-                        if (esPalindroma) {
-                            escribirFichero.write(palabra + " ");
-                        }
-                    } else if (palabra.length() == 1) {
+                    if (palabra.length() == 1 || (palabra.length() > 1 && esPalindroma(palabra))) {
                         escribirFichero.write(palabra + " ");
                     }
                 }
@@ -49,5 +36,17 @@ public class Ejercicio2 {
             System.err.println("El fichero " + rutaFicheroEntrada + " no existe, es un directorio o no se puede abrir en modo lectura.");
         }
         teclado.close();
+    }
+
+    public static boolean esPalindroma(String palabra) {
+        String palabraMayus = palabra.toUpperCase();
+        int i = 0;
+        int longitudPalabra = palabra.length();
+        boolean esPalindroma = palabraMayus.charAt(0) == palabraMayus.charAt(longitudPalabra - 1);
+        while (esPalindroma && i < longitudPalabra / 2) {
+            esPalindroma &= palabraMayus.charAt(i) == palabraMayus.charAt(longitudPalabra - i - 1);
+            i++;
+        }
+        return esPalindroma;
     }
 }

@@ -13,18 +13,22 @@ public class Ejercicio3 {
         try (
             FileInputStream ficheroEntrada = new FileInputStream(rutaFicheroEntrada);
         ) {
-            boolean esZip = ficheroEntrada.read() == CABECERA_ZIP[0];
-            int i = 1;
-            while (esZip && i < CABECERA_ZIP.length) {
-                esZip &= ficheroEntrada.read() == CABECERA_ZIP[i];
-                i++;
-            }
-            System.out.println("El fichero " + rutaFicheroEntrada + (esZip ? "" : " no") + " es un fichero ZIP.");
+            System.out.println("El fichero " + rutaFicheroEntrada + (esZip(ficheroEntrada) ? "" : " no") + " es un fichero ZIP.");
         } catch (FileNotFoundException e) {
             System.err.println("El fichero " + rutaFicheroEntrada + " no existe, es un directorio o no se puede abrir en modo lectura.");
         } catch (IOException e) {
             System.err.println("Ha ocurrido un error de E/S durante la lectura del fichero " + rutaFicheroEntrada + ". Error: " + e.getMessage());
         }
         teclado.close();
+    }
+
+    public static boolean esZip(FileInputStream fichero) throws IOException {
+        boolean esZip = fichero.read() == CABECERA_ZIP[0];
+        int i = 1;
+        while (esZip && i < CABECERA_ZIP.length) {
+            esZip &= fichero.read() == CABECERA_ZIP[i];
+            i++;
+        }
+        return esZip;
     }
 }

@@ -28,6 +28,7 @@ public class Ejercicio4C {
             String tipo;
             int peso;
             int altura;
+            int coincidencias = 0;
 
             boolean tipoCoincide;
             
@@ -41,6 +42,7 @@ public class Ejercicio4C {
                 tipoCoincide = tipoObjetivo.equals(tipo);
                 
                 if (tipoCoincide) {
+                    coincidencias++;
                     fichero.seek(posDni);
 
                     for (int i = 0; i < arDni.length; i++) {
@@ -68,6 +70,10 @@ public class Ejercicio4C {
                 posDni += BYTES_POR_REGISTRO;
                 posTipo += BYTES_POR_REGISTRO;
                 posPeso += BYTES_POR_REGISTRO;
+            }
+
+            if (coincidencias < 1) {
+                System.out.printf("No existen %ss en el fichero.\n", tipoObjetivo);
             }
             
         } catch (FileNotFoundException e) {
